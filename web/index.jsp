@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <jsp:useBean id="user" class="com.wby.bean.User" scope="request"/>
   <jsp:setProperty name="user" property="*"></jsp:setProperty>
   <body>
+
  <center>
      <jsp:include page="top.jsp"></jsp:include><br>
   <table>
