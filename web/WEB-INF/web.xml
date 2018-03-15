@@ -4,16 +4,55 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+<!--为所有的页面配置同一的请求编码-->
+    <filter>
+        <filter-name>encoding</filter-name>
+        <filter-class>com.wby.servlet.EncodingFilter</filter-class>
+        <init-param>
+            <param-name>charSet</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+<!--处理登录页面所提交的验证 -->
+    <servlet>
+        <servlet-name>doLogin</servlet-name>
+        <servlet-class>com.wby.servlet.DoLogin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>doLogin</servlet-name>
+        <url-pattern>/doLogin</url-pattern>
+    </servlet-mapping>
 
 
-
-
-
-
-
-
-
-
-
-
+<!--用户存放Session里的键值-->
+    <context-param>
+        <param-name>userSessionKey</param-name>
+        <param-value>UserSessionKey</param-value>
+    </context-param>
+    <!--需要重定向的页面-->
+    <context-param>
+        <param-name>redirectPage</param-name>
+        <param-value>/page/index.jsp</param-value>
+    </context-param>
+    <!--不需要检查的页面-->
+    <context-param>
+        <param-name>uncheckedUrls</param-name>
+        <param-value>/index.jsp,/page/index.jsp,/doLogin,/doLogin.jsp</param-value>
+    </context-param>
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.wby.servlet.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/page/*</url-pattern>
+    </filter-mapping>
 </web-app>

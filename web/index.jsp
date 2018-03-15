@@ -19,20 +19,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
   </head>
-   <% request.setCharacterEncoding("utf-8"); //解决中文乱码%>
-  <%--同 import语句--%>
-  <jsp:useBean id="user" class="com.wby.bean.User" scope="request"/>
-  <jsp:setProperty name="user" property="*"></jsp:setProperty>
   <body>
-
+  <jsp:useBean id="user" class="com.wby.bean.User"></jsp:useBean>
+  <jsp:setProperty name="user" property="*"></jsp:setProperty>
  <center>
-     <jsp:include page="top.jsp"></jsp:include><br>
   <table>
-   <form action="checkLogin.jsp">
-     用户名：<input type="text" name="username" value="<jsp:getProperty name="user" property="username" />"><%= user.getErrorMsg("errname")%><br/>
-   密码：<input type="password" name="password" value="<jsp:getProperty name="user" property="password" />"><%= user.getErrorMsg("errpassword")%><br/>
-   年龄：<input type="text" name="age" value="<jsp:getProperty name="user" property="age" />"><%= user.getErrorMsg("errage")%><br/>
-   电邮： <input type="email" name="email" value="<jsp:getProperty name="user" property="email" />"><%= user.getErrorMsg("erremail")%><br/><br>
+   <form action="/doLogin">
+     用户名：<input type="text" name="username" ><br/>
+     密码：<input type="password" name="password" ><br/>
    <input type="submit" values="登陆" > <input type="reset" value="重置">
    </form>
   </table>
