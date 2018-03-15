@@ -37,7 +37,6 @@ public class LoginFilter implements Filter {
         //哪些资源不必拦截
         List<String>urls= Arrays.asList(uncheckedUrls.split(","));
         if(urls.contains(servletPath)){
-            System.out.print("user....  " +user);
             filterChain.doFilter(servletRequest,servletResponse);
             return;
         }

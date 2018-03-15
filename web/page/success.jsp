@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*,com.wby.bean.User" pageEncoding="utf-8"%>
+
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -22,7 +23,9 @@
 <body>
 
 <center>
-   欢迎 <%= session.getAttribute("userSessionKey")%>登录
+
+
+    欢迎 <%= session.getAttribute("userSessionKey").toString() %>登录
 </center>
 </body>
 </html>
